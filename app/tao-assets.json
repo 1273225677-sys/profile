@@ -1,0 +1,137 @@
+[
+  {
+    "src": "/tao/exhibition-01.jpg",
+    "title": "展览现场 · 整体陈列",
+    "group": "展览现场",
+    "width": 1440,
+    "height": 1151,
+    "key": "exhibition-01",
+    "thumb": "/tao/exhibition-01-thumb.jpg"
+  },
+  {
+    "src": "/tao/exhibition-02.jpg",
+    "title": "展览现场 · 小册子与纸品",
+    "group": "展览现场",
+    "width": 1440,
+    "height": 1009,
+    "key": "exhibition-02",
+    "thumb": "/tao/exhibition-02-thumb.jpg"
+  },
+  {
+    "src": "/tao/exhibition-03.jpg",
+    "title": "展览现场 · 品牌物料",
+    "group": "展览现场",
+    "width": 1440,
+    "height": 1017,
+    "key": "exhibition-03",
+    "thumb": "/tao/exhibition-03-thumb.jpg"
+  },
+  {
+    "src": "/tao/product-01.jpg",
+    "title": "手持杯套",
+    "group": "作品摄影",
+    "width": 1086,
+    "height": 1448,
+    "key": "product-01",
+    "thumb": "/tao/product-01-thumb.jpg"
+  },
+  {
+    "src": "/tao/product-02.jpg",
+    "title": "手提袋与杯套组合",
+    "group": "作品摄影",
+    "width": 1135,
+    "height": 1444,
+    "key": "product-02",
+    "thumb": "/tao/product-02-thumb.jpg"
+  },
+  {
+    "src": "/tao/product-03.jpg",
+    "title": "纸品细节",
+    "group": "作品摄影",
+    "width": 1290,
+    "height": 1439,
+    "key": "product-03",
+    "thumb": "/tao/product-03-thumb.jpg"
+  },
+  {
+    "src": "/tao/product-04.jpg",
+    "title": "品牌物料平铺",
+    "group": "作品摄影",
+    "width": 1448,
+    "height": 1086,
+    "key": "product-04",
+    "thumb": "/tao/product-04-thumb.jpg"
+  },
+  {
+    "src": "/tao/product-05.jpg",
+    "title": "手提袋、杯套与卡片",
+    "group": "作品摄影",
+    "width": 1086,
+    "height": 1448,
+    "key": "product-05",
+    "thumb": "/tao/product-05-thumb.jpg"
+  },
+  {
+    "src": "/tao/product-06.jpg",
+    "title": "包装系列组合",
+    "group": "作品摄影",
+    "width": 1086,
+    "height": 1448,
+    "key": "product-06",
+    "thumb": "/tao/product-06-thumb.jpg"
+  },
+  {
+    "src": "/tao/product-07.jpg",
+    "title": "透明手提袋",
+    "group": "作品摄影",
+    "width": 1290,
+    "height": 1587,
+    "key": "product-07",
+    "thumb": "/tao/product-07-thumb.jpg"
+  },
+  {
+    "src": "/tao/product-08.jpg",
+    "title": "杯套与包装盒",
+    "group": "作品摄影",
+    "width": 1086,
+    "height": 1448,
+    "key": "product-08",
+    "thumb": "/tao/product-08-thumb.jpg"
+  },
+  {
+    "src": "/tao/product-09.jpg",
+    "title": "物料组合俯拍",
+    "group": "作品摄影",
+    "width": 1448,
+    "height": 1086,
+    "key": "product-09",
+    "thumb": "/tao/product-09-thumb.jpg"
+  },
+  {
+    "src": "/tao/product-10.jpg",
+    "title": "杯套与黑色卡片",
+    "group": "作品摄影",
+    "width": 1448,
+    "height": 1086,
+    "key": "product-10",
+    "thumb": "/tao/product-10-thumb.jpg"
+  },
+  {
+    "src": "/tao/product-11.jpg",
+    "title": "纸品与杯套陈列",
+    "group": "作品摄影",
+    "width": 1086,
+    "height": 1448,
+    "key": "product-11",
+    "thumb": "/tao/product-11-thumb.jpg"
+  },
+  {
+    "src": "/tao/poster.jpg",
+    "title": "一方洮砚，一方山水 · 主视觉海报",
+    "group": "主视觉",
+    "width": 1600,
+    "height": 2400,
+    "key": "poster",
+    "thumb": "/tao/poster-thumb.jpg"
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "key": "poster-black",
+    "title": "主视觉 · 黑版",
+    "group": "主视觉",
+    "src": "/aqua/poster-black.jpg",
+    "thumb": "/aqua/poster-black-thumb.jpg",
+    "width": 1280,
+    "height": 1920
+  },
+  {
+    "key": "research",
+    "title": "项目研究与系统说明",
+    "group": "设计物料",
+    "src": "/aqua/research.jpg",
+    "thumb": "/aqua/research-thumb.jpg",
+    "width": 1701,
+    "height": 2551
+  },
+  {
+    "key": "data",
+    "title": "呼吸与压力 · 数据可视化",
+    "group": "设计物料",
+    "src": "/aqua/data.jpg",
+    "thumb": "/aqua/data-thumb.jpg",
+    "width": 1280,
+    "height": 7456
+  },
+  {
+    "key": "scene",
+    "title": "空间应用 · 场景效果图",
+    "group": "场景与装置",
+    "src": "/aqua/scene.jpg",
+    "thumb": "/aqua/scene-thumb.jpg",
+    "width": 1280,
+    "height": 1280
+  },
+  {
+    "key": "states",
+    "title": "藻井光影 · 状态图谱",
+    "group": "设计物料",
+    "src": "/aqua/states.jpg",
+    "thumb": "/aqua/states-thumb.jpg",
+    "width": 752,
+    "height": 589
+  },
+  {
+    "key": "poster-white",
+    "title": "主视觉 · 白版",
+    "group": "主视觉",
+    "src": "/aqua/poster-white.jpg",
+    "thumb": "/aqua/poster-white-thumb.jpg",
+    "width": 1280,
+    "height": 1920
+  },
+  {
+    "key": "installation",
+    "title": "装置原型与空间应用",
+    "group": "场景与装置",
+    "src": "/aqua/installation.jpg",
+    "thumb": "/aqua/installation-thumb.jpg",
+    "width": 1280,
+    "height": 1811
+  },
+  {
+    "key": "book-open",
+    "title": "小册子 · 展开效果",
+    "group": "设计物料",
+    "src": "/aqua/book-open.jpg",
+    "thumb": "/aqua/book-open-thumb.jpg",
+    "width": 1707,
+    "height": 1280
+  },
+  {
+    "key": "book-cover",
+    "title": "小册子 · 封面效果",
+    "group": "设计物料",
+    "src": "/aqua/book-cover.jpg",
+    "thumb": "/aqua/book-cover-thumb.jpg",
+    "width": 1707,
+    "height": 1280
+  },
+  {
+    "key": "overview",
+    "title": "作品与物料总览",
+    "group": "设计物料",
+    "src": "/aqua/overview.jpg",
+    "thumb": "/aqua/overview-thumb.jpg",
+    "width": 1811,
+    "height": 1280
+  }
+]

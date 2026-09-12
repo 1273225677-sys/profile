@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.env*
+/public/aqua/film.mp4
+/public/castaway/booklet.pdf

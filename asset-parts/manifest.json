@@ -1,0 +1,34 @@
+{
+  "public/aqua/film.mp4": {
+    "parts": [
+      "asset-parts/aqua/film.mp4.part-000",
+      "asset-parts/aqua/film.mp4.part-001",
+      "asset-parts/aqua/film.mp4.part-002",
+      "asset-parts/aqua/film.mp4.part-003",
+      "asset-parts/aqua/film.mp4.part-004",
+      "asset-parts/aqua/film.mp4.part-005"
+    ],
+    "sha256": "458e23c68d5f9590292acf70a75ceb14c4fa62ec2ea163c05351e21c1afe046f"
+  },
+  "public/castaway/booklet.pdf": {
+    "parts": [
+      "asset-parts/castaway/booklet.pdf.part-000",
+      "asset-parts/castaway/booklet.pdf.part-001",
+      "asset-parts/castaway/booklet.pdf.part-002",
+      "asset-parts/castaway/booklet.pdf.part-003",
+      "asset-parts/castaway/booklet.pdf.part-004",
+      "asset-parts/castaway/booklet.pdf.part-005",
+      "asset-parts/castaway/booklet.pdf.part-006",
+      "asset-parts/castaway/booklet.pdf.part-007",
+      "asset-parts/castaway/booklet.pdf.part-008",
+      "asset-parts/castaway/booklet.pdf.part-009",
+      "asset-parts/castaway/booklet.pdf.part-010",
+      "asset-parts/castaway/booklet.pdf.part-011",
+      "asset-parts/castaway/booklet.pdf.part-012",
+      "asset-parts/castaway/booklet.pdf.part-013",
+      "asset-parts/castaway/booklet.pdf.part-014",
+      "asset-parts/castaway/booklet.pdf.part-015"
+    ],
+    "sha256": "9c531fb39ff756244e43f874421be36bbac5d3389ec7102e96dbb8eb02112e39"
+  }
+}
