@@ -16,7 +16,7 @@ export default function ViewingTools(){
    const target=e.type==='dblclick'?(clicked.closest('.book-page')?.querySelector('img')||clicked):clicked;
    if(!(target instanceof HTMLImageElement)||target.closest('.image-inspector'))return;
    const book=target.closest('.book-spread');
-   if(e.type==='click'&&(book||target.closest('button')||!target.closest('.project-view')))return;
+   if(e.type==='click'&&(book||target.closest('.paper')||target.closest('button')||!target.closest('.project-view')))return;
    e.preventDefault();e.stopPropagation();
    previousFocus.current=document.activeElement as HTMLElement;
    const link=target.closest('a');
