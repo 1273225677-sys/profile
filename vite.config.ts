@@ -11,7 +11,7 @@ export default defineConfig({
     name:'github-pages-asset-paths',enforce:'pre',
     transform(code,id){
       if(base==='/' || !/[/\\]app[/\\].*\.(tsx|json)$/.test(id))return;
-      return code.replace(/(["'`])\/(?=(?:aqua|castaway|decode|dune|intergrowth|lone|prediction|sign|spiral|stitching|tao|winter)\/|preview-cover-|artwork\.)/g,(_,quote)=>quote+base);
+      return code.replace(/(["'`])\/(?=(?:aqua|castaway|decode|dune|intergrowth|lone|prediction|sign|spiral|stitching|tao|winter|lastline)\/|preview-cover-|artwork\.)/g,(_,quote)=>quote+base);
     }
   },react()],
 });
