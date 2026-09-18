@@ -1,0 +1,50 @@
+[
+  {
+    "src": "/experiments/study-1.jpg",
+    "original": "/experiments/study-1.jpg",
+    "title": "气囊原型 · 平面结构",
+    "group": "pneumatic",
+    "width": 1448,
+    "height": 1086
+  },
+  {
+    "src": "/experiments/study-2.jpg",
+    "original": "/experiments/study-2.jpg",
+    "title": "实验搭建 · 气泵与控制电路",
+    "group": "pneumatic",
+    "width": 1448,
+    "height": 1086
+  },
+  {
+    "src": "/experiments/study-3.jpg",
+    "original": "/experiments/study-3.jpg",
+    "title": "气囊原型 · 立体结构",
+    "group": "pneumatic",
+    "width": 1086,
+    "height": 1448
+  },
+  {
+    "src": "/experiments/study-4.jpg",
+    "original": "/experiments/study-4.jpg",
+    "title": "刺绣样本 · 局部绿色发光",
+    "group": "embroidery",
+    "width": 1200,
+    "height": 1600
+  },
+  {
+    "src": "/experiments/study-5.jpg",
+    "original": "/experiments/study-5.jpg",
+    "title": "刺绣样本 · 局部黄色发光",
+    "group": "embroidery",
+    "width": 1200,
+    "height": 1600
+  },
+  {
+    "src": "/experiments/study-6.jpg",
+    "original": "/experiments/study-6.jpg",
+    "title": "刺绣样本 · 多色发光状态",
+    "group": "embroidery",
+    "width": 1402,
+    "height": 1122
+  }
+]
