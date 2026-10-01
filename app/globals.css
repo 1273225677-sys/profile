@@ -73,3 +73,5 @@
 .direct-paper img{cursor:grab;touch-action:none;user-select:none;-webkit-user-drag:none}.direct-paper img:active{cursor:grabbing}.direct-paper .paper-size-controls>span{margin-right:auto;align-self:center;font-size:10px;color:#666;padding-left:5px}.paper-corner{position:absolute;width:16px;height:16px;background:white;border:2px solid #555;z-index:10;touch-action:none;padding:0}.corner-nw{left:-5px;top:-5px;cursor:nwse-resize}.corner-ne{right:-5px;top:-5px;cursor:nesw-resize}.corner-sw{left:-5px;bottom:-5px;cursor:nesw-resize}.corner-se{right:-5px;bottom:-5px;cursor:nwse-resize}.paper-corner:hover,.paper-corner:focus-visible{background:#ffff8a}.desk:has(.direct-paper){overflow:auto}
 
 .archive-category{grid-column:1/-1;min-width:0}.archive-category h2{font-size:12px;font-weight:400;background:#111;color:#fff;padding:8px 10px;margin:12px 0 0}.archive-category .real-project-entry{width:100%}.archive-tab-title{letter-spacing:0}
+
+.book-spread.book-cover-only{width:50%;margin-inline:auto;grid-template-columns:1fr}
