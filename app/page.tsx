@@ -69,9 +69,17 @@ const archiveGroups=[
 ];
 // Display order is separate from stable work IDs and detail URLs.
 const files:[number|string,string,number,number][]=[];
+// Stagger the tabs across three lanes while keeping each category together.
+const tabPositions:[number,number][]=[
+ [300,151],[540,191],[790,231],[530,278],[790,322],[270,367],[540,411],
+ [790,465],[530,512],[270,554],
+ [530,610],[790,652],[530,698],
+ [270,752],[530,790],[790,834],
+ [530,886],[270,934],[790,978],
+];
 for(const group of archiveGroups){
- files.push([group.name,group.name,320,110+files.length*50]);
- for(const index of group.items)files.push([94+index,archiveTitles[index],650,110+files.length*50]);
+ files.push([group.name,group.name,...tabPositions[files.length]]);
+ for(const index of group.items)files.push([94+index,archiveTitles[index],...tabPositions[files.length]]);
 }
 const works=archiveTitles.map((name,i)=>({...projects[i%projects.length],name,en:name.toUpperCase(),fileNumber:94+i,word:name.charAt(0),cover:'/preview-cover-0.jpg',real:false}));
 Object.assign(works[0],{name:'洮砚',en:'ONE INKSTONE, ONE LANDSCAPE',type:'品牌设计 / 丝网印刷',year:'—',desc:'以洮砚文化为主题的丝网印刷品牌设计。将书法笔意与水纹转化为视觉语言，延展到杯套、手提袋、包装盒与纸品，并通过主视觉海报、小册子和展览现场呈现。',cover:'/preview-cover-1.jpg',real:true});
