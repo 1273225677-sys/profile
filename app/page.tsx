@@ -1,5 +1,6 @@
 "use client";
 import ViewingTools from "./viewing-tools";
+import BackgroundMusic from "./background-music";
 import {Tabs,TabsList,TabsTrigger,TabsContent} from "@/components/ui/tabs";
 import bookPages from "./book-pages.json";
 import taoAssets from "./tao-assets.json";
@@ -103,7 +104,7 @@ export default function Home(){
  const p=selected===null?null:works[selected];
  const preview=hover===null?null:works[hover];
  function open(i:number){location.hash=`work-${i}`;setSelected(i);setHover(null);setReset(v=>v+1);window.scrollTo(0,0)}
- return <><ViewingTools/><main className={p?'project-view':'archive-view'}>{!p?<>
+ return <><ViewingTools/><BackgroundMusic/><main className={p?'project-view':'archive-view'}>{!p?<>
  <header className="thin-nav"><a href="#">GG</a><span>theme</span><span>↗↗</span><span>keywords</span><span>↗↗</span><span>［作品档案］</span><span>2024—2026</span><span>INDEX ↗</span></header>
  <div className="research-layout"><section className="research-main"><div className="desk-labels"><span>ARCHIVE / {works.length} FILES</span><span>INDEX</span><span>MATERIALS</span></div><div className="archive-surface"><div className="column-lines"/>
  <svg className="archive-svg" viewBox="0 0 1290 1283" aria-label="作品文件柜，悬停展开预览，点击打开作品" onMouseLeave={()=>setHover(null)}>
