@@ -29,20 +29,70 @@ export function ReadingMotion({project}:{project:number|null}){
 }
 
 let activeTransition:{skipTransition:()=>void;finished:Promise<void>}|undefined;
-export function openWithMotion(index:number,cover:string,update:()=>void){
- activeTransition?.skipTransition();
- const doc=document as Document & {startViewTransition?:(update:()=>void)=>{skipTransition:()=>void;finished:Promise<void>}};
- if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!doc.startViewTransition){update();return}
+function clearTransitionCovers(){
  document.querySelectorAll('[data-transition-cover]').forEach(el=>{(el as HTMLElement).style.removeProperty('view-transition-name');el.removeAttribute('data-transition-cover')});
- const source=document.querySelector<SVGElement>(`[data-file-number="${94+index}"] image`)||Array.from(document.querySelectorAll<HTMLImageElement>('.research-sidebar img')).find(img=>img.getAttribute('src')===cover);
- if(source){source.style.setProperty('view-transition-name','archive-cover');source.setAttribute('data-transition-cover','')}
+}
+function markCover(el:Element|null|undefined){
+ if(el){(el as HTMLElement).style.setProperty('view-transition-name','archive-cover');el.setAttribute('data-transition-cover','')}
+}
+function coverTransition(source:Element|null|undefined,target:()=>Element|null,update:()=>void,done?:()=>void){
+ activeTransition?.skipTransition();
+ clearTransitionCovers();
+ const doc=document as Document & {startViewTransition?:(update:()=>void)=>{skipTransition:()=>void;finished:Promise<void>}};
+ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!doc.startViewTransition){flushSync(update);done?.();return}
+ markCover(source);
  const transition=doc.startViewTransition(()=>{
   flushSync(update);
-  const target=document.querySelector<HTMLElement>('.dossier-intro figure img');
-  if(target){target.style.setProperty('view-transition-name','archive-cover');target.setAttribute('data-transition-cover','')}
+  markCover(target());
  });
  activeTransition=transition;
- transition.finished.catch(()=>{}).finally(()=>{if(activeTransition!==transition)return;activeTransition=undefined;document.querySelectorAll('[data-transition-cover]').forEach(el=>{(el as HTMLElement).style.removeProperty('view-transition-name');el.removeAttribute('data-transition-cover')})});
+ transition.finished.catch(()=>{}).finally(()=>{if(activeTransition!==transition)return;activeTransition=undefined;clearTransitionCovers();done?.()});
+}
+export function openWithMotion(index:number,cover:string,update:()=>void){
+ const source=document.querySelector<SVGElement>(`[data-file-number="${94+index}"] image`)||Array.from(document.querySelectorAll<HTMLImageElement>('.research-sidebar img')).find(img=>img.getAttribute('src')===cover);
+ coverTransition(source,()=>document.querySelector('.dossier-intro figure img'),update);
+}
+export function returnWithMotion(index:number,update:()=>void,settled:()=>void){
+ const visible=(el:Element)=>{const r=el.getBoundingClientRect();return r.width>0&&r.bottom>30&&r.top<innerHeight};
+ const source=Array.from(document.querySelectorAll('.dossier-intro figure img,.paper img,.book-page img')).find(visible);
+ coverTransition(source,()=>document.querySelector(`[data-file-number="${94+index}"] .archive-return-cover`),update,()=>{
+  const target=document.querySelector(`[data-file-number="${94+index}"] .archive-return-cover`);
+  if(!target||window.matchMedia('(prefers-reduced-motion: reduce)').matches){settled();return}
+  target.animate([{opacity:1,translate:'0 0'},{opacity:0,translate:'0 18px'}],{duration:280,easing:'ease-in',fill:'forwards'}).finished.catch(()=>{}).finally(settled);
+ });
+}
+
+// Event-driven parallax uses a separate layer from the folder and drag transforms.
+export function MaterialMotion({project}:{project:number|null}){
+ const reduced=useReducedMotion();
+ useEffect(()=>{
+  if(reduced||!window.matchMedia('(hover: hover) and (pointer: fine)').matches)return;
+  const surface=project===null?document.querySelector<HTMLElement>('.archive-surface'):null;
+  let frame=0,lastX=0,lastY=0,curled:HTMLElement|null=null;
+  const clearCurl=()=>{curled?.removeAttribute('data-curl');curled=null};
+  const reset=()=>{cancelAnimationFrame(frame);frame=0;surface?.style.setProperty('--drift-x','0px');surface?.style.setProperty('--drift-y','0px');clearCurl()};
+  const draw=()=>{
+   frame=0;
+   if(surface){const r=surface.getBoundingClientRect();const x=Math.max(-1,Math.min(1,(lastX-r.left)/r.width*2-1));const y=Math.max(-1,Math.min(1,(lastY-r.top)/r.height*2-1));surface.style.setProperty('--drift-x',`${x*5}px`);surface.style.setProperty('--drift-y',`${y*5}px`)}
+  };
+  const move=(event:globalThis.PointerEvent)=>{
+   if(event.pointerType!=='mouse'||event.buttons){clearCurl();return}
+   const target=event.target as Element;
+   if(surface){if(surface.contains(target)){lastX=event.clientX;lastY=event.clientY;if(!frame)frame=requestAnimationFrame(draw)}else reset();return}
+   const paper=target.closest<HTMLElement>('.book-page,.direct-paper');
+   if(!paper||paper.hasAttribute('data-handling')||paper.closest('.turning-leaf')){clearCurl();return}
+   const r=paper.getBoundingClientRect(),x=event.clientX-r.left,y=event.clientY-r.top;
+   const edge=Math.min(64,r.width*.2,r.height*.2);
+   const horizontal=x<edge?'w':x>r.width-edge?'e':'';
+   const vertical=y<edge?'n':y>r.height-edge?'s':'';
+   const innerSpine=paper.classList.contains('left')&&horizontal==='e'||paper.classList.contains('right')&&horizontal==='w';
+   if(!horizontal||!vertical||innerSpine){clearCurl();return}
+   if(curled!==paper)clearCurl();curled=paper;paper.dataset.curl=vertical+horizontal;
+  };
+  document.addEventListener('pointermove',move,{passive:true});document.addEventListener('pointerdown',clearCurl,{passive:true});document.addEventListener('pointerleave',reset);window.addEventListener('blur',reset);
+  return()=>{reset();document.removeEventListener('pointermove',move);document.removeEventListener('pointerdown',clearCurl);document.removeEventListener('pointerleave',reset);window.removeEventListener('blur',reset)};
+ },[project,reduced]);
+ return null;
 }
 
 const lightFrames=[

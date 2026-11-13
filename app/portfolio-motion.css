@@ -1,5 +1,19 @@
 /* Motion is restrained and independent of the archive's staggered layout. */
-.archive-file,.divider-file{transition:transform 480ms cubic-bezier(.22,.7,.25,1)}
+.archive-file,.divider-file{transition:transform 560ms cubic-bezier(.22,.7,.25,1),opacity 420ms ease;cursor:pointer}
+.category-receded .file-sheet>path{stroke:#aaa}
+.category-receded .archive-tab-title{opacity:.65}
+.category-receded:hover .archive-tab-title,.category-receded:focus-visible .archive-tab-title,.category-receded.expanded-file .archive-tab-title{opacity:1}
+.divider-file:focus-visible .archive-tab-title{text-decoration:underline;text-underline-offset:4px}
+.archive-return-cover{pointer-events:none}
+.returning-file .archive-tab-title{animation:archive-label-settle 380ms 650ms ease both}
+@keyframes archive-label-settle{from{translate:0 -5px}to{translate:0 0}}
+.archive-close-category{position:absolute;right:12px;bottom:6px;z-index:3;font-size:11px;padding:6px 10px;border:1px solid #aaa;background:white;cursor:pointer}
+.archive-category-toggle{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;text-align:left;cursor:pointer}
+.archive-category-toggle[aria-expanded="true"]{color:#ffffa4}
+.archive-category-toggle:focus-visible,.archive-close-category:focus-visible{outline:2px solid #888;outline-offset:3px}
+.archive-surface{--drift-x:0px;--drift-y:0px;background-position:0 var(--drift-y);transition:background-position 320ms ease}
+.archive-surface>.column-lines{translate:var(--drift-x) var(--drift-y);transition:translate 320ms ease}
+.archive-surface>.archive-svg{translate:calc(var(--drift-x) * -.4) calc(var(--drift-y) * -.4);transition:translate 320ms ease}
 .archive-arriving .file-enter{animation:archive-arrive 720ms cubic-bezier(.22,.7,.25,1) both}
 @keyframes archive-arrive{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
 .expanded-file .file-sheet{animation-duration:550ms;animation-timing-function:cubic-bezier(.22,.7,.25,1)}
@@ -9,6 +23,24 @@
 .direct-paper[data-handling="move"]{box-shadow:0 18px 35px #0002,0 4px 8px #0001}
 .direct-paper[data-handling="resize"]{box-shadow:0 7px 20px #0002;transition:rotate 280ms ease,box-shadow 280ms ease}
 .direct-paper[data-handling="move"]{transition:rotate 200ms ease,box-shadow 200ms ease}
+.direct-paper::after,.book-page::after{content:"";position:absolute;top:0;right:0;width:26px;height:26px;z-index:8;pointer-events:none;opacity:0;background:linear-gradient(225deg,transparent 47%,#d6d4ce 49%,#f4f3ef 57%,#fff 80%);clip-path:polygon(0 0,100% 100%,0 100%);transform:scale(.25);transform-origin:center;filter:drop-shadow(-2px 3px 2px #0003);transition:transform 320ms ease,opacity 280ms ease}
+.direct-paper[data-curl]::after,.book-page[data-curl]::after{opacity:1;transform:scale(1)}
+.direct-paper:has(.paper-corner:focus-visible)::after{opacity:1;transform:scale(1)}
+.direct-paper:has(.corner-nw:focus-visible)::after{top:0;bottom:auto;right:auto;left:0;rotate:-90deg}
+.direct-paper:has(.corner-ne:focus-visible)::after{top:0;bottom:auto;right:0;left:auto;rotate:0deg}
+.direct-paper:has(.corner-sw:focus-visible)::after{top:auto;bottom:0;right:auto;left:0;rotate:180deg}
+.direct-paper:has(.corner-se:focus-visible)::after{top:auto;bottom:0;right:0;left:auto;rotate:90deg}
+[data-curl="nw"]::after{right:auto;left:0;rotate:-90deg}
+[data-curl="sw"]::after{top:auto;bottom:0;left:0;right:auto;rotate:180deg}
+[data-curl="se"]::after{top:auto;bottom:0;rotate:90deg}
+.direct-paper[data-handling]::after,.turning-leaf .book-page::after{opacity:0;transform:scale(.25)}
+.background-music .music-mark{position:relative;display:inline-grid;place-items:center;width:18px;margin-right:4px;isolation:isolate}
+.music-ripples{position:absolute;inset:0;opacity:0;transition:opacity 650ms ease;pointer-events:none}
+.music-ripples i{position:absolute;left:50%;top:50%;width:12px;height:12px;border:1px solid #555;border-radius:50%;animation:music-ripple 4.6s ease-out infinite;animation-play-state:paused}
+.music-ripples i+i{animation-delay:-2.3s}
+.background-music[data-playing="true"] .music-ripples{opacity:1}
+.background-music[data-playing="true"] .music-ripples i{animation-play-state:running}
+@keyframes music-ripple{0%{transform:translate(-50%,-50%) scale(.55);opacity:.45}85%,100%{transform:translate(-50%,-50%) scale(2.1);opacity:0}}
 .project-view .dossier-heading{animation:project-arrive 500ms ease both}
 @keyframes project-arrive{from{opacity:.4;translate:0 8px}to{opacity:1;translate:0 0}}
 ::view-transition-group(archive-cover){animation-duration:650ms;animation-timing-function:cubic-bezier(.22,.7,.25,1)}
@@ -31,10 +63,15 @@
 .motion-study button:focus-visible{outline:2px solid #555;outline-offset:3px}
 .motion-study-note{padding:0 16px 12px;margin:0;font-size:11px;color:#666}
 @media(max-width:600px){.motion-study-heading{align-items:flex-start;padding:10px;font-size:10px}.motion-study-controls{padding:10px;gap:4px}.motion-study-controls>span{flex-basis:100%;margin:6px 0 0}.motion-study-controls button{min-width:30px;padding:7px}.moon-study .study-frame{padding:12px}}
+@media(max-width:759px){.archive-surface[data-open-category]{padding-bottom:48px}.archive-surface[data-open-category] .archive-caption{bottom:36px}.archive-close-category{right:8px;bottom:4px}}
+@media(hover:none),(pointer:coarse){.direct-paper::after,.book-page::after{display:none}}
 @media(prefers-reduced-motion:reduce){
  .archive-file,.divider-file,.file-sheet>path,.direct-paper,.direct-paper[data-handling],.study-frame{transition:none!important}
  .archive-arriving .file-enter,.expanded-file .file-sheet,.project-view .dossier-heading{animation:none!important}
  .direct-paper{rotate:0deg!important}
- .archive-file,.divider-file{transform:none!important}
+ .archive-surface,.archive-surface>.column-lines,.archive-surface>.archive-svg{translate:none!important;transition:none!important;background-position:0 0}
+ .direct-paper::after,.book-page::after{display:none}
+ .returning-file .archive-tab-title,.music-ripples i{animation:none!important}
+ .music-ripples{display:none}
  ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
 }
