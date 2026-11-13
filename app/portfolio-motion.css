@@ -1,0 +1,40 @@
+/* Motion is restrained and independent of the archive's staggered layout. */
+.archive-file,.divider-file{transition:transform 480ms cubic-bezier(.22,.7,.25,1)}
+.archive-arriving .file-enter{animation:archive-arrive 720ms cubic-bezier(.22,.7,.25,1) both}
+@keyframes archive-arrive{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+.expanded-file .file-sheet{animation-duration:550ms;animation-timing-function:cubic-bezier(.22,.7,.25,1)}
+.file-sheet>path{transition:d 480ms cubic-bezier(.22,.7,.25,1)}
+.archive-file:focus-visible .archive-tab-title{text-decoration:underline;text-underline-offset:5px}
+.direct-paper{transition:transform 240ms ease,rotate 280ms ease,box-shadow 280ms ease}
+.direct-paper[data-handling="move"]{box-shadow:0 18px 35px #0002,0 4px 8px #0001}
+.direct-paper[data-handling="resize"]{box-shadow:0 7px 20px #0002;transition:rotate 280ms ease,box-shadow 280ms ease}
+.direct-paper[data-handling="move"]{transition:rotate 200ms ease,box-shadow 200ms ease}
+.project-view .dossier-heading{animation:project-arrive 500ms ease both}
+@keyframes project-arrive{from{opacity:.4;translate:0 8px}to{opacity:1;translate:0 0}}
+::view-transition-group(archive-cover){animation-duration:650ms;animation-timing-function:cubic-bezier(.22,.7,.25,1)}
+::view-transition-old(archive-cover),::view-transition-new(archive-cover){height:100%;object-fit:contain;mix-blend-mode:normal}
+::view-transition-old(root){animation-duration:200ms}
+::view-transition-new(root){animation-duration:450ms}
+.motion-study{grid-column:1/-1;width:100%;min-width:0;border:1px solid #aaa;background:#fff;margin-top:20px}
+.motion-study-heading{display:flex;gap:12px;align-items:center;justify-content:space-between;border-bottom:1px solid #ccc;padding:12px 16px;font-size:11px;letter-spacing:.6px}
+.motion-study-heading button{border:1px solid #aaa;padding:7px 10px;white-space:nowrap;cursor:pointer}
+.motion-study-stage{position:relative;width:100%;height:clamp(220px,36vw,460px);overflow:hidden;background:#fafafa}
+.light-study .motion-study-stage{height:clamp(300px,60vw,660px);background:#101211}
+.study-frame{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity 1100ms ease;pointer-events:none}
+.study-frame.is-current{opacity:1}
+.moon-study .motion-study-stage{height:clamp(220px,24vw,300px)}
+.moon-study .study-frame{padding:25px;transition:opacity 500ms ease}
+.motion-study-controls{display:flex;align-items:center;gap:6px;flex-wrap:wrap;border-top:1px solid #ccc;padding:12px 16px;font-size:12px}
+.motion-study-controls button{padding:8px;min-width:36px;border:1px solid #bbb;cursor:pointer;font-variant-numeric:tabular-nums}
+.motion-study-controls button[aria-pressed="true"]{background:#111;color:white;border-color:#111}
+.motion-study-controls>span{margin-left:auto;color:#555}
+.motion-study button:focus-visible{outline:2px solid #555;outline-offset:3px}
+.motion-study-note{padding:0 16px 12px;margin:0;font-size:11px;color:#666}
+@media(max-width:600px){.motion-study-heading{align-items:flex-start;padding:10px;font-size:10px}.motion-study-controls{padding:10px;gap:4px}.motion-study-controls>span{flex-basis:100%;margin:6px 0 0}.motion-study-controls button{min-width:30px;padding:7px}.moon-study .study-frame{padding:12px}}
+@media(prefers-reduced-motion:reduce){
+ .archive-file,.divider-file,.file-sheet>path,.direct-paper,.direct-paper[data-handling],.study-frame{transition:none!important}
+ .archive-arriving .file-enter,.expanded-file .file-sheet,.project-view .dossier-heading{animation:none!important}
+ .direct-paper{rotate:0deg!important}
+ .archive-file,.divider-file{transform:none!important}
+ ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
+}
